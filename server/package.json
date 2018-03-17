@@ -1,0 +1,15 @@
+{
+  "name": "nearby-shops",
+  "version": "1.0.0",
+  "description": "Hidden Founders Web Code Challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MEVN",
+    "stack"
+  ],
+  "author": "Mohamed El Mahdali",
+  "license": "MIT"
+}
