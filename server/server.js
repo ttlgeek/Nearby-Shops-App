@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+const users = require('./routes/users');
+
 // Port Configuration
 const port = process.env.PORT || 1337
 
