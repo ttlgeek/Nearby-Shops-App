@@ -15,6 +15,9 @@ app.listen(port, () => {
 	console.log('Server started on Port: ' + port);
 });
 
+// Add CORS Middleware
+app.use(cors())
+
 //Routing
 app.get('/', (req, res) => {
 	res.send('Invalid Endpoint');
