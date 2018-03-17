@@ -37,6 +37,8 @@ app.use(cors())
 // Add Body Parser Middleware
 app.use(bodyParser.json())
 
+app.use('/users', users);
+
 //Routing
 app.get('/', (req, res) => {
 	res.send('Invalid Endpoint');
