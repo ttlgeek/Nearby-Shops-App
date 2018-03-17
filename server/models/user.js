@@ -28,3 +28,13 @@ module.exports.getUserByEmail = (email, callback) => {
 	const query = {email: email}
 	User.findOne(query, callback);
 }
+
+module.exports.addUser = (newUser, callback) => {
+	bcrypt.genSalt(10, (err, salt) => {
+		bcrypt.hash(newUser.password, salt, (err, hash) => {
+			if(err) throw err;
+			newUser.password = hash;
+			newUser.save(callback);
+		});
+	});
+}
