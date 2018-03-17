@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const config = require('../config/database');
+const passport = require('passport');
+const jwt = require('jsonwebtoken');
 const Joi = require('joi');
 const User = require('../models/user');
 
+// Register
 
 router.post('/register', (req, res, next) => {
 	const email = req.body.email;
@@ -57,6 +60,41 @@ router.post('/register', (req, res, next) => {
 		}
 	});
 
+});
+
+// Authentication
+
+router.post('/auth', (req, res, next) => {
+	const email = req.body.email;
+	const password = req.body.password;
+
+	User.getUserByEmail(email, (err, user) => {
+		if(err) throw err;
+		if(!user){
+			return res.status(400).send({success: false, error:"User not found!"});
+		}
+
+		User.comparePassword(password, user.password, (err, isMatch) =>{
+			if (err) throw err;
+			if(isMatch){
+				const token = jwt.sign(user.toJSON(), config.secret, {
+					expiresIn : 60 * 60 * 24 * 7 // 1 Week
+				});
+
+				res.json({
+					success: true,
+					token: 'JWT '+token,
+					user: {
+						id: user._id,
+						email: user.email
+					}
+				})
+			}
+			else {
+				return res.status(400).send({success: false, error:"Wrong Password!"});
+			}
+		});
+	});
 });
 
 module.exports = router;
