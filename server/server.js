@@ -37,6 +37,12 @@ app.use(cors())
 // Add Body Parser Middleware
 app.use(bodyParser.json())
 
+// Add Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport)
+
 app.use('/users', users);
 
 //Routing
