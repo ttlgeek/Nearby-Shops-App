@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose');
+const config = require('./config/database');
 
 // Establish Database Connection
 mongoose.connect(config.database);
