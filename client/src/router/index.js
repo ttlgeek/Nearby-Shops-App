@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Nearby from '@/components/Nearby'
+import Preferred from '@/components/Preferred'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/nearby',
       name: 'nearby',
       component: Nearby
+    },
+    {
+      path: '/preferred',
+      name: 'preferred',
+      component: Preferred
     }
   ]
 })
