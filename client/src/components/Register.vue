@@ -1,7 +1,6 @@
 <template>
-  <v-layout column>
-    <v-flex xs6 offset-xs4>
-      <div class="white elevation-2 mt-5 fix">
+    <v-flex xs6 offset-xs3>
+      <div class="white elevation-2 mt-5">
         <v-toolbar flat dense class="amber darken-3" dark>
           <v-toolbar-title>Register</v-toolbar-title>
         </v-toolbar>
@@ -26,7 +25,6 @@
         </div>
       </div>
     </v-flex>
-  </v-layout>
 </template>
 
 <script>
