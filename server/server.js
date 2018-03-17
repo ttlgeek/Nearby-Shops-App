@@ -18,6 +18,9 @@ app.listen(port, () => {
 // Add CORS Middleware
 app.use(cors())
 
+// Add Body Parser Middleware
+app.use(bodyParser.json())
+
 //Routing
 app.get('/', (req, res) => {
 	res.send('Invalid Endpoint');
