@@ -16,3 +16,7 @@ const ShopSchema = mongoose.Schema({
 });
 
 const Shop = module.exports = mongoose.model('shop', ShopSchema, "shops");
+
+module.exports.getShopById = (id, callback) => {
+	Shop.findById(id, callback);
+}
