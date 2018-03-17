@@ -14,3 +14,8 @@ const port = process.env.PORT || 1337
 app.listen(port, () => {
 	console.log('Server started on Port: ' + port);
 });
+
+//Routing
+app.get('/', (req, res) => {
+	res.send('Invalid Endpoint');
+});
