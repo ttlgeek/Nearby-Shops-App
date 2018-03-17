@@ -23,3 +23,8 @@ const User = module.exports = mongoose.model('User', UserSchema);
 module.exports.getUserById = (id, callback) => {
 	User.findById(id, callback);
 }
+
+module.exports.getUserByEmail = (email, callback) => {
+	const query = {email: email}
+	User.findOne(query, callback);
+}
