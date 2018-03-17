@@ -33,4 +33,19 @@ router.post('/preferredShops', passport.authenticate('jwt', {session: false}), (
     });
 });
 
+// Add Shop to User's preferred shops
+
+router.post('/addShop', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+	Shop.getShopById(req.body.shopID, (err, shop) => {
+		if (err) throw err;
+		User.findByIdAndUpdate(req.body.userID,
+    	{$push: {preferred: shop}},
+    	{safe: true, upsert: true},
+        (err, model) => {
+        if (err) throw err;
+        return res.json({status: "Shop added successfully"})
+    });
+ });
+});
+
 module.exports = router;
