@@ -22,6 +22,7 @@ mongoose.connection.on('error', (error) =>{
 const app = express();
 
 const users = require('./routes/users');
+const shops = require('./routes/shops');
 
 // Port Configuration
 const port = process.env.PORT || 1337
@@ -44,6 +45,7 @@ app.use(passport.session());
 require('./config/passport')(passport)
 
 app.use('/users', users);
+app.use('/api', shops);
 
 //Routing
 app.get('/', (req, res) => {
