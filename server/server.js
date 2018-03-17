@@ -27,6 +27,9 @@ const shops = require('./routes/shops');
 // Port Configuration
 const port = process.env.PORT || 1337
 
+// Set Frontend Folder
+app.use(express.static(path.join(__dirname, '../client')));
+
 // Start server
 app.listen(port, () => {
 	console.log('Server started on Port: ' + port);
@@ -46,8 +49,3 @@ require('./config/passport')(passport)
 
 app.use('/users', users);
 app.use('/api', shops);
-
-//Routing
-app.get('/', (req, res) => {
-	res.send('Invalid Endpoint');
-});
