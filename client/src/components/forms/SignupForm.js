@@ -55,7 +55,6 @@ class SignupForm extends React.Component {
               msg: data.msg,
               loading: false
             });
-            this.props.redirect();
           }
         });
     }

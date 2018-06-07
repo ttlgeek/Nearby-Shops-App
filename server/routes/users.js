@@ -93,7 +93,7 @@ router.post("/auth", (req, res, next) => {
   User.getUserByEmail(email, (err, user) => {
     if (err) throw err;
     if (!user) {
-      return res.status(400).send({
+      return res.send({
         success: false,
         errors: {
           global: "User not found!"
@@ -110,7 +110,7 @@ router.post("/auth", (req, res, next) => {
 
         return res.json({
           success: true,
-          token: "JWT " + token,
+          token: "JWT  " + token,
           user: {
             id: user._id,
             email: user.email

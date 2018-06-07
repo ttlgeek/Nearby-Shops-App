@@ -1,26 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Segment, Button, Divider } from "semantic-ui-react";
-import { connect } from "react-redux";
+import { Segment, Header } from "semantic-ui-react";
 
-const HomePage = ({ isAuthenticated }) => (
-  <div>
-    <Segment>
-      <Button primary fluid as={Link} to="/login">
-        Login
-      </Button>
-      <Divider horizontal>Or</Divider>
-      <Button secondary fluid as={Link} to="/signup">
-        Sign Up Now
-      </Button>
-    </Segment>
-  </div>
-);
-
-function mapStateToProps(state) {
-  return {
-    isAuthenticated: !!state.user.token
-  };
+class HomePage extends React.Component {
+  render() {
+    const style = { textAlign: "center" };
+    return (
+      <Segment>
+        <Header as="h1" textAlign="center">
+          Welcome to the Neaby Shops App!
+        </Header>
+        <p style={style}>
+          To create an account or sign in, please use the buttons in the top
+          right corner
+        </p>
+      </Segment>
+    );
+  }
 }
 
-export default connect(mapStateToProps)(HomePage);
+export default HomePage;

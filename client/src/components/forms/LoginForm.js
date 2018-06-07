@@ -97,7 +97,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(auth, dispatch);
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(LoginForm);
+export default connect(mapDispatchToProps)(LoginForm);

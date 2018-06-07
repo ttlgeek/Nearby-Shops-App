@@ -5,17 +5,26 @@ import { connect } from "react-redux";
 import HomePage from "./components/pages/HomePage";
 import SignupPage from "./components/pages/SignupPage";
 import LoginPage from "./components/pages/LoginPage";
-import DashboardPage from "./components/pages/DashboardPage";
+import NavBar from "./components/navbar/NavBar";
+import NearbyShops from "./components/pages/NearbyShops";
+import PreferredShops from "./components/pages/PreferredShops";
 
 const App = ({ location, isAuthenticated }) => (
   <div className="container">
-    <Route path="/" exact component={HomePage} />
+    <NavBar />
+    <Route
+      path="/"
+      exact
+      render={() =>
+        !isAuthenticated ? <HomePage /> : <Redirect to="/nearby" />
+      }
+    />
     <Route
       path="/signup"
       location={location}
       exact
       render={() =>
-        !isAuthenticated ? <SignupPage /> : <Redirect to="/dashboard" />
+        !isAuthenticated ? <SignupPage /> : <Redirect to="/nearby" />
       }
     />
     <Route
@@ -23,14 +32,22 @@ const App = ({ location, isAuthenticated }) => (
       location={location}
       exact
       render={() =>
-        !isAuthenticated ? <LoginPage /> : <Redirect to="/dashboard" />
+        !isAuthenticated ? <LoginPage /> : <Redirect to="/nearby" />
       }
     />
     <Route
-      path="/dashboard"
+      path="/nearby"
       location={location}
       exact
-      render={() => (isAuthenticated ? <DashboardPage /> : <Redirect to="/" />)}
+      render={() => (isAuthenticated ? <NearbyShops /> : <Redirect to="/" />)}
+    />
+    <Route
+      path="/preferred"
+      location={location}
+      exact
+      render={() =>
+        isAuthenticated ? <PreferredShops /> : <Redirect to="/" />
+      }
     />
   </div>
 );
