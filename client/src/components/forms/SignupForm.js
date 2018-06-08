@@ -66,12 +66,12 @@ class SignupForm extends React.Component {
     return (
       <Form onChange={this.onChange} onSubmit={this.onSubmit} loading={loading}>
         <Form.Field error={!!errors.email} required>
-          <label htmlFor="email">Adresse électronique</label>
+          <label htmlFor="email">E-Mail</label>
           <input
             type="email"
             id="email"
             name="email"
-            placeholder="Votre e-mail"
+            placeholder="Your E-Mail"
             value={data.email}
           />
           {!!errors.email && (
@@ -80,13 +80,13 @@ class SignupForm extends React.Component {
         </Form.Field>
 
         <Form.Field error={!!errors.password} required>
-          <label htmlFor="password">Mot de passe</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             id="password"
             name="password"
             value={data.password}
-            placeholder="Votre Mot de Passe"
+            placeholder="Password"
           />
           {!!errors.password && (
             <span style={{ color: "#ae5856" }}>{errors.password}</span>
